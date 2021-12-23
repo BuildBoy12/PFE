@@ -1,16 +1,40 @@
-﻿using Exiled.API.Interfaces;
-using System.ComponentModel;
+﻿// -----------------------------------------------------------------------
+// <copyright file="Config.cs" company="Build">
+// Copyright (c) Build. All rights reserved.
+// Licensed under the CC BY-SA 3.0 license.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace PFE
 {
-	public class Config : IConfig
-	{
-		public bool IsEnabled { get; set; } = true;
-		public bool Debug { get; set; } = false;
+    using System.ComponentModel;
+    using Exiled.API.Interfaces;
 
-		[Description("Magnitude is the quantity of explosions. A low number recommended.")]
-		public int Magnitude { get; set; } = 1;
-		[Description("Delay between death and explosion. Value below 0.15 will BREAK the explosion effect.")]
-		public float Delay { get; set; } = 0.15f;
-	}
+    /// <inheritdoc />
+    public class Config : IConfig
+    {
+        /// <inheritdoc />
+        public bool IsEnabled { get; set; } = true;
+
+        /// <summary>
+        /// Gets or sets a collection of roles that should explode upon death.
+        /// </summary>
+        [Description("A collection of roles that should explode upon death.")]
+        public RoleType[] AffectedRoles { get; set; } =
+        {
+            RoleType.Scp173,
+        };
+
+        /// <summary>
+        /// Gets or sets the amount of grenades to spawn.
+        /// </summary>
+        [Description("The amount of grenades to spawn.")]
+        public int Magnitude { get; set; } = 1;
+
+        /// <summary>
+        /// Gets or sets the amount of time, in seconds, between death and the explosion.
+        /// </summary>
+        [Description("The amount of time, in seconds, between death and the explosion.")]
+        public float Delay { get; set; } = 0.15f;
+    }
 }
