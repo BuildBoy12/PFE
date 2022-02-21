@@ -9,6 +9,7 @@ namespace PFE
 {
     using Exiled.API.Features.Items;
     using Exiled.Events.EventArgs;
+    using InventorySystem.Items.ThrowableProjectiles;
 
     /// <summary>
     /// Handles events derived from <see cref="Exiled.Events.Handlers"/>.
@@ -29,7 +30,8 @@ namespace PFE
             if (!plugin.Config.AffectedRoles.Contains(ev.Target.Role))
                 return;
 
-            ExplosiveGrenade explosionGrenade = new ExplosiveGrenade(ItemType.GrenadeHE, ev.Target) { FuseTime = plugin.Config.Delay };
+            ThrowableItem throwableItem = (ThrowableItem)ev.Target.Inventory.CreateItemInstance(ItemType.GrenadeHE, true);
+            ExplosiveGrenade explosionGrenade = new ExplosiveGrenade(throwableItem) { FuseTime = plugin.Config.Delay };
             for (int i = 0; i < plugin.Config.Magnitude; i++)
             {
                 explosionGrenade.SpawnActive(ev.Target.Position, ev.Target);
