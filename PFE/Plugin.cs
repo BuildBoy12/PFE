@@ -18,13 +18,13 @@ namespace PFE
         private EventHandlers eventHandlers;
 
         /// <inheritdoc />
-        public override string Author { get; } = "Build";
+        public override string Author => "Build";
 
         /// <inheritdoc />
-        public override string Name { get; } = "PFE";
+        public override string Name => "PFE";
 
         /// <inheritdoc />
-        public override string Prefix { get; } = "PFE";
+        public override string Prefix => "PFE";
 
         /// <inheritdoc />
         public override Version Version { get; } = new Version(1, 0, 0);
