@@ -27,7 +27,7 @@ namespace PFE
         /// <inheritdoc cref="Exiled.Events.Handlers.Player.OnDying(DyingEventArgs)"/>
         public void OnDying(DyingEventArgs ev)
         {
-            if (!plugin.Config.AffectedRoles.Contains(ev.Target.Role))
+            if (!plugin.Config.AffectedRoles.Contains(ev.Target.Role.Type))
                 return;
 
             ThrowableItem throwableItem = (ThrowableItem)ev.Target.Inventory.CreateItemInstance(ItemType.GrenadeHE, true);
